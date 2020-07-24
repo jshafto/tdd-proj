@@ -1,5 +1,5 @@
 # Test-Driven Development Project
-Completed as part of the App Academy curriculum. Implementation by Daniel Ford and Juliet Shafto.git
+Completed as part of the App Academy curriculum. Implementation by Daniel Ford and Juliet Shafto.
 
 ## Steps
 - [x] Phase 0: Testing the reverseString function
@@ -11,5 +11,5 @@ Completed as part of the App Academy curriculum. Implementation by Daniel Ford a
     - [x] visit method
     - [x] switchVisit method
     - [x] update method
-    - [ ] tryUpdate method
-    - [ ] greetAll static method
+    - [x] tryUpdate method
+    - [x] greetAll static method

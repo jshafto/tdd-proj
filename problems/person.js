@@ -22,6 +22,20 @@ class Person {
         this.name = obj.name;
         this.age = obj.age;
     }
+
+    tryUpdate(obj) {
+        try {
+            this.update(obj);
+            return true;
+        }
+        catch (e) {
+            return false;
+        }
+    }
+
+    static greetAll(people) {
+        return people.map(person => person.sayHello());
+    }
 }
 
 module.exports = Person

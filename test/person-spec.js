@@ -80,7 +80,39 @@ describe("Person class", () => {
             })
         })
 
+        describe("prototype.tryUpdate()", ()=> {
+            context("if prototype.update is successfully invoked", ()=> {
+                it("should return true", ()=> {
+                    let attempt = person.tryUpdate({name: newName, age: newAge});
+                    expect(attempt).to.be.true;
+                })
+                it("should have been updated", () => {
+                    person.tryUpdate({name: newName, age: newAge});
+                    expect(person.name).to.eql(newName);
+                    expect(person.age).to.eql(newAge);
+                })
+            })
+            context("if prototype.update is not successful", () => {
+                it("should return false", () => {
+                    let attempt = person.tryUpdate({name: "phil"});
+                    expect(attempt).to.be.false;
+                })
+            })
+        })
 
+
+
+    })
+    describe("static methods", () => {
+        describe("greetAll()", () => {
+            it("should return an array with the sayHello string for each person in array", () => {
+                let inputArr = [person, person2];
+                let expected = [person.sayHello(), person2.sayHello()];
+
+                expect(Person.greetAll(inputArr)).to.eql(expected);
+
+            })
+        })
     })
 
 
