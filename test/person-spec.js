@@ -13,9 +13,11 @@ describe("Person class", () => {
     let name = "molly"
     let age = 30;
 
+    let newName = 'velma';
+    let newAge = 12;
     beforeEach("create new person", () => {
         person = new Person(name, age);
-        person2 = new Person()
+        person2 = new Person(name2, age2);
     })
     describe("constructor", () => {
         it("should have constructor that sets name and age", ()=> {
@@ -33,17 +35,54 @@ describe("Person class", () => {
         describe("prototype.sayHello()", () => {
             it("should return `Hello ${name}`", () => {
                 let expected = `Hello ${name}`;
-                let huh = person.sayHello();
-                expect(huh).to.eql(expected);
+                let result = person.sayHello();
+                expect(result).to.eql(expected);
             })
         })
-
         describe("prototype.visit()", ()=> {
-            it("should return string visited the passed-in instance Person", () =>{
-
+            it("should return string person visited the passed-in instance Person", () =>{
+                let expected = `${name} visited ${name2}`;
+                let result = person.visit(person2);
+                expect(result).to.eql(expected);
             })
         })
+
+        describe("prototype.switchVisit()", () => {
+            it("should return string passed-in instance Person visited person", ()=> {
+                let expected = `${name2} visited ${name}`;
+                let result = person.switchVisit(person2);
+                expect(result).to.eql(expected);
+            })
+            it("should call the visit method", () => {
+                let visitSpy = chai.spy.on(person2, 'visit');
+                person.switchVisit(person2);
+                expect(visitSpy).to.have.been.called.once;
+            })
+        })
+
+        describe("prototype.update()", () => {
+            context("if argument is not an object", ()=>{
+                it("returns TypeError", () => {
+                    expect(()=> {person.update("watman")}).to.throw(TypeError);
+                })
+            })
+            context("if argument is an object that doesn't have both a name and age property", ()=>{
+                it("returns TypeError", () => {
+                    expect(()=> {person.update({name: "phil"})}).to.throw(TypeError);
+                })
+            })
+            context("if argument is an object", () => {
+                it("should be updated to match the passed-in object's values", () => {
+                    person.update({name: newName, age: newAge});
+                    expect(person.name).to.eql(newName);
+                    expect(person.age).to.eql(newAge);
+                })
+            })
+        })
+
+
     })
+
 
 
 
