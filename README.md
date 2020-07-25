@@ -8,8 +8,8 @@ Completed as part of the App Academy curriculum. Implementation by Daniel Ford a
 - Phase 3: Testing classes
     - [x] Person constructor
     - [x] sayHello method
-    - [ ] visit method
-    - [ ] switchVisit method
-    - [ ] update method
-    - [ ] tryUpdate method
-    - [ ] greetAll static method
+    - [x] visit method
+    - [x] switchVisit method
+    - [x] update method
+    - [x] tryUpdate method
+    - [x] greetAll static method
